@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+.propertySection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55%;
+    height: 80%;
+    overflow-y: auto; 
+    flex: 1;
+}
+
+.propertyCard{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: 650px;
+    margin: 12px 0;
+    position: relative;
+}
+
+.propertyHead{
+    border-bottom: 1px solid rgb(209 209 209/1);
+    padding: 12px;
+}
+
+.propertySubHeading p{
+    font-size: .9rem;
+}
+
+.propertyBody{
+    display: flex;
+    padding: 12px;
+}
+
+.propertyImg{
+    width: 250px;
+    height: 200px;
+    margin-right: 12px;
+}
+
+.propertyDetails{
+    width: 450px;
+    height: 150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.propertyDetails div{
+    text-indent: 1ch;
+    /* text-align: center; */
+    line-height: 75px;
+    font-size: 1.3rem;
+}
+
+.propertyDetails div i{
+    margin-right: 4px;
+}
+
+.propertySubHeading{
+    color: gray;
+}
+  
+.propertyDetails > div:nth-child(1) {
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.propertyDetails > div:nth-child(2) {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.propertyDetails > div:nth-child(3) {
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.propertyQuickLinks{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 0;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.propertyQuickLinks p{
+    font-size: 1.2rem;
+    color: grey;
+}
+  
+.cartButton {
+    margin-right: 10px;
+    color: #fff;
+    border: none;
+    font-size: 13px;
+    line-height: 38px;
+    border-radius: 50px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 170px;
+    text-align: center;
+}
+
+.cartButton:hover {
+    background: #fff;
+    /* color: #339DFF; */
+    box-shadow: 0 4px 4px rgba(83, 100, 255, 0.32);
+    cursor: pointer;
+}
+
+.cartCountContainer{
+    position: absolute;
+    width: 150px;
+    height: 70px;
+    top: 0;
+    right: 0;
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 70px;
+    color: gray;
+}
+
+.cartCountContainer i{
+    margin: 0 8px;
+    color: darkcyan;
+}
+
+.bookMang{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.cartSection{
+    width: 60%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.cartSection::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

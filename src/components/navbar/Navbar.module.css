@@ -1,0 +1,86 @@
+nav{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 0 4px 12px 0 rgba(0,0,0, 0.07), 0 2px 4px rgba(0,0,0, 0.05);
+    height: 66px;
+    user-select: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.navContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navContainer .navMenu{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 22px;
+}
+
+.navMenu li{
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.searchContainer form{
+    width: 400px;
+    height: 33px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.searchContainer form input{
+    width: 300px;
+    padding: 4.5px 12px 3.68px 12px;
+    border-color: rgba(0,0,0, 0.05);
+    transition: all 0.2s linear;
+}
+
+form input[type="search"]:focus {
+    outline: none; 
+    border: 2px solid #2557a7;
+    border-right: none;
+    border-top-left-radius: 4px; 
+    border-bottom-left-radius: 4px; 
+}
+
+.searchContainer form button{
+    width: 100px;
+    background-color: transparent;
+    color: #2557a7;
+    border: 2px solid currentColor;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+.subNav{
+    height: 60px;
+    display: flex;
+    border-bottom: 1px solid #e4e2e0;
+
+}
+
+.subNav div{
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.12rem;
+    font-weight: 700;
+}
+.filter{
+    width: 22%;
+}
+.feed{
+    border-bottom: 4px solid #2557a7;
+    width: 53%;
+}
+.property{
+    width: 25%;
+}
