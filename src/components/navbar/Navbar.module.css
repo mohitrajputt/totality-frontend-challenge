@@ -28,12 +28,48 @@ nav{
     cursor: pointer;
 }
 
+.searchContainer{
+    display: flex;
+}
+
 .searchContainer form{
-    width: 400px;
+    width: 350px;
     height: 33px;
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
+}
+
+.filterButton{
+    display: none;
+    font-size: 1.5rem;
+    margin: 0 14px;
+    line-height: 33px;
+    color: blue;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .searchContainer form{
+        width: 65vw;
+    }
+	.searchContainer {
+		position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 1;
+	}
+    .filterButton{
+        display: block;
+    }
+    .searchContainer form button{
+        display: none;
+    }
+    .auth{
+        display: none;
+    }
+    
 }
 
 .searchContainer form input{
@@ -65,7 +101,12 @@ form input[type="search"]:focus {
     height: 60px;
     display: flex;
     border-bottom: 1px solid #e4e2e0;
+}
 
+@media screen and (max-width: 900px) {
+	.subNav {
+		display: none;
+	}
 }
 
 .subNav div{
@@ -74,13 +115,16 @@ form input[type="search"]:focus {
     font-size: 1.12rem;
     font-weight: 700;
 }
+
 .filter{
     width: 22%;
 }
+
 .feed{
     border-bottom: 4px solid #2557a7;
     width: 53%;
 }
+
 .property{
     width: 25%;
 }

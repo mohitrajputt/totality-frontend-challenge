@@ -1,41 +1,10 @@
 import style from "./PropertyCard.module.css";
-import {propertyrentaldata} from "../../../db/db1";
 import loading from "../../../assets/24544990.jpg"
 import { useValue } from "../../../ContextApi";
-import { useCallback, useEffect, useState } from "react";
 
 function PropertyCard() {
 
-    const {addCart, searchQuery, activeFilters, rangeQuery} = useValue();
-    const [filteredData, setFilteredData] = useState(propertyrentaldata);
-
-    const filterProducts = useCallback( () => {
-        if(activeFilters.length) {
-            const tempItems = propertyrentaldata.filter((item) => activeFilters.includes(item.apartmenttype) || activeFilters.includes(item.facing))
-            setFilteredData(tempItems);
-            console.log(activeFilters)
-        }
-        else {
-            setFilteredData(propertyrentaldata);
-        }
-    },[activeFilters]);
-
-    useEffect(() => {
-        const rangeData = propertyrentaldata.filter(item => {
-            const priceNumeric = parseFloat(item.price.replace(/\D/g, '')); 
-            return priceNumeric >= rangeQuery;
-        });
-        
-        setFilteredData(rangeData);
-    },[rangeQuery]);
-
-    useEffect(() => {
-        filterProducts()
-    }, [activeFilters, filterProducts]);
-
-    useEffect(() => {
-        setFilteredData(propertyrentaldata.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase())))
-    },[searchQuery]);
+    const {addCart, filteredData} = useValue();
 
     return(
         <section className={style.propertySection} > 

@@ -2,8 +2,9 @@ import { addDoc, collection, doc, deleteDoc, getDoc, updateDoc, onSnapshot } fro
 import {db} from "./Firebaseconfig";
 import { toast,ToastContainer,Zoom } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { propertyrentaldata } from "./db/db1";
 
-const { createContext, useContext, useState, useEffect } = require("react");
+const { createContext, useContext, useState, useEffect, useCallback } = require("react");
 
 const context = createContext();
 
@@ -15,23 +16,33 @@ function useValue() {
 function CustomContext({children}) {
 
     const [cartItem, setCartItem] = useState([]);
-    const [activeFilters, setActiveFilters] = useState([]);
+
     const [searchQuery, setSearchQuery] = useState('');
     const [rangeQuery, setRangeQuery] = useState(null);
+    const [activeFilters, setActiveFilters] = useState([]);
+    const [filteredData, setFilteredData] = useState(propertyrentaldata);
+
+// ************************************* Logic for Filter items ********************************
+
+    // Handle Search Query
+    const handleInputChange = (event) => {
+        setSearchQuery(event.target.value)
+    }
 
     useEffect(() => {
-        onSnapshot(collection(db, "cart"), (snapShot) => {
-            const cart = snapShot.docs.map((doc) => {
-                return {
-                    id: doc.id,
-                    ...doc.data()
-                }
-            })
-            setCartItem(cart);
-        })
-    },[]);
+        setFilteredData(propertyrentaldata.filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase())))
+    },[searchQuery]);
 
-    // filter
+    // Handle Price Range Filter
+    useEffect(() => {
+        const rangeData = propertyrentaldata.filter(item => {
+            const priceNumeric = parseFloat(item.price.replace(/\D/g, '')); 
+            return priceNumeric >= rangeQuery;
+        });
+        setFilteredData(rangeData);
+    },[rangeQuery]);
+
+    // Set of active queryies to apply filter 
     const handleFilterClick = (e) => {
         const category = e.target.id;
         if (activeFilters.includes(category)) {
@@ -44,14 +55,41 @@ function CustomContext({children}) {
         console.log(activeFilters);
     }
 
+    // Handle Checkbox Filter [Apartment & Direction]
+    const filterProducts = useCallback( () => {
+        if(activeFilters.length) {
+            const tempItems = propertyrentaldata.filter((item) => activeFilters.includes(item.apartmenttype) || activeFilters.includes(item.facing))
+            setFilteredData(tempItems);
+        }
+        else {
+            setFilteredData(propertyrentaldata);
+        }
+    },[activeFilters]);
+    
+    useEffect(() => {
+        filterProducts()
+    }, [activeFilters, filterProducts]);
+
+
+    // function to reset all active filters
     function reserFilter() {
         setActiveFilters([]);
     }
-    
-    // Function to handle search input change
-    const handleInputChange = (event) => {
-        setSearchQuery(event.target.value)
-    }
+
+// **************************** Logic for Cart ****************************************************************
+
+    // Effector to fetch real time cart item from firestore 
+    useEffect(() => {
+        onSnapshot(collection(db, "cart"), (snapShot) => {
+            const cart = snapShot.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+            })
+            setCartItem(cart);
+        })
+    },[cartItem]);    
 
     // Function to add items to Cart
     async function addCart(item) {
@@ -120,12 +158,14 @@ function CustomContext({children}) {
         }
     }
 
-
     return (
         <context.Provider value={
-            {cartItem,setCartItem, addCart,removeCart,cartCountDicrease, cartCountIncrease, handleInputChange, searchQuery,handleFilterClick,activeFilters, reserFilter, rangeQuery, setRangeQuery}
-        } >
+            {cartItem,setCartItem, addCart,removeCart,cartCountDicrease, 
+            cartCountIncrease, handleInputChange, searchQuery,handleFilterClick,
+            activeFilters, reserFilter, rangeQuery, setRangeQuery, filteredData}
+        }>
             {children}
+            
             <ToastContainer 
             autoClose={2000} 
             hideProgressBar={false}

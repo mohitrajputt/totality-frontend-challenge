@@ -19,10 +19,9 @@ function Navbar (){
                 <div className={style.searchContainer} >
                     <form>
                         <input type="search" placeholder="Type query" value={searchQuery} onChange={handleInputChange} />
-                        <button type="button" >
-                            SEARCH
-                        </button>
+                        <button type="button" > SEARCH </button>
                     </form>
+                    <div className={style.filterButton} ><i className="fa-solid fa-list"></i></div>
                 </div>
             </div>
             <div className={style.navContainer} >
@@ -40,10 +39,10 @@ function Navbar (){
                         </Link>
                     </li>
                     }
-                    <li>
+                    <li className={style.auth} >
                         <p>Sign In</p>
                     </li>
-                    <li>
+                    <li className={style.auth} >
                         <p>Sign Up</p>
                     </li>
                 </ul>

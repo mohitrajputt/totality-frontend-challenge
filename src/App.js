@@ -7,28 +7,25 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App() {
 
-  const router = createBrowserRouter([
-    {
-      path: '/', element: <Navbar/>, children: [
-        {
-          index: true, element: <main>
-          <Filter/>
-          <PropertyCard/>
-          <Review/>
-        </main>
-        },
-        {
-          path: 'cart', element: <Cart/>
-        }
-      ]
-    }
-  ])
+const router = createBrowserRouter([
+  {
+    path: '/', element: <Navbar/>, children: [
+      {
+        index: true, element: <main> <Filter/> <PropertyCard/> <Review/> </main>
+      },
+      {
+        path: 'cart', element: <Cart/>
+      }
+    ]
+  }
+])
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+return (
+  <>
+    <RouterProvider router={router} />
+  </>
+);
+
 }
 
 export default App;

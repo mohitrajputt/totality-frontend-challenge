@@ -6,6 +6,14 @@
     overflow: auto;
 }
 
+@media screen and (max-width: 700px) {
+	.checkoutSection {
+		margin-top: 50px;
+        width: 80%;
+        margin: auto;
+	}
+}
+
 .checkoutContainer{
     border-top: 2px solid blue;
     background-color: azure;
@@ -45,7 +53,13 @@
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
-  }
+}
+
+@media screen and (max-width: 700px) {
+	.productName {
+		width: 130px;
+	}
+}
   
   .productName h2,
   .productName p {

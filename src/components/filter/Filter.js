@@ -21,26 +21,9 @@ function Filter() {
                             </button>
                         ))
                     }
-                    {/* <ul>
-                        <li>
-                            <input type="checkbox" id="bh1" onChange={(e) => handleCheckbox('1bhk',e.target.checked)} />
-                            <label htmlFor="bh1" >1 - BHK</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="bh2" onChange={(e) => handleCheckbox('2bhk',e.target.checked)} />
-                            <label htmlFor="bh2" >2 - BHK</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="bh3" onChange={(e) => handleCheckbox('3bhk',e.target.checked)} />
-                            <label htmlFor="bh3" >3 - BHK</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="bh4" onChange={(e) => handleCheckbox('4bhk',e.target.checked)} />
-                            <label htmlFor="bh4" >4 - BHK</label>
-                        </li>
-                    </ul> */}
                 </div>
             </div>
+
             <div className={style.rangeContainer} >
                 <div className={style.rangeHeading} >
                     <span>Price Range: 0 to 22K</span>
@@ -49,6 +32,7 @@ function Filter() {
                     <input type="range" min="7500" max="22000" onChange={(e) => setRangeQuery(e.target.value)}/>
                 </div>
             </div>
+
             <div className={style.cardinalDirectionContainer} >
                 <div className={style.directionHeading} >
                     <span>Directions</span>
@@ -61,26 +45,9 @@ function Filter() {
                             </button>
                         ))
                     }
-                    {/* <ul>
-                        <li>
-                            <input type="checkbox" id="east" />
-                            <label htmlFor="east" >EAST</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="west" />
-                            <label htmlFor="west" >WEST</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="north" />
-                            <label htmlFor="north" >NORTH</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="south" />
-                            <label htmlFor="south" >SOUTH</label>
-                        </li>
-                    </ul> */}
                 </div>
             </div>
+
             <div className={style.parkingContainer} >
                 <div className={style.parkingAvaHeading} >
                     <span>Parking Availability</span>
@@ -90,9 +57,11 @@ function Filter() {
                     <label htmlFor="parking" >Parking</label>
                 </div>
             </div>
+
             <div className={style.resetFilter} >
                 <p onClick={reserFilter} >⟲ Reset</p>
             </div>
+            
         </section>
     )
 }
