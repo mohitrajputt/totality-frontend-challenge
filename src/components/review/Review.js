@@ -5,19 +5,19 @@ function Review() {
     return (
         <section className={style.reviewSection} >
             {feedbacks.map((feedback, index) => (
-                <div class={style.outerdiv} key={index} >
-                <div class={style.innerdiv}>
-                    <div class={style.eachdiv}>
-                        <div class={style.userdetails}>
-                            <div class={style.imgbox}>
-                                <img src="https://cdn-icons-png.flaticon.com/128/236/236832.png" alt="" />
+                <div className={style.outerdiv} key={index} >
+                <div className={style.innerdiv}>
+                    <div className={style.eachdiv}>
+                        <div className={style.userdetails}>
+                            <div className={style.imgbox}>
+                                <img src="https://cdn-icons-png.flaticon.com/128/236/236832.png" alt="U" />
                             </div>
-                            <div class={style.detbox}>
-                                <p class={style.name}>{feedback.userName}</p>
-                                <p class={style.designation}>{feedback.userEmail}</p>
+                            <div className={style.detbox}>
+                                <p className={style.name}>{feedback.userName}</p>
+                                <p className={style.designation}>{feedback.userEmail}</p>
                             </div>
                         </div>
-                        <div class={style.review}>
+                        <div className={style.review}>
                             <p>“{feedback.feedbackMsg}”</p>
                         </div>
                     </div>

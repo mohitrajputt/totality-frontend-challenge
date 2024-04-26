@@ -1,47 +1,67 @@
+import { useValue } from "../../ContextApi";
 import style from "./Filter.module.css";
 
 function Filter() {
+
+    const {handleFilterClick, activeFilters, reserFilter, setRangeQuery} = useValue();
+    const bhkFilter = ['1bhk','2bhk','3bhk','4bhk',];
+    const directionFilter = ['East', 'West', 'North', 'South'];
+
     return(
         <section className={style.filterSection} >
             <div className={style.bhkTypeContainer} >
                 <div className={style.bhkHeading} >
                     <span>BHK Type</span>
                 </div>
-                <div className={style.bhkSelectors} >
-                    <ul>
+                <div className={style.bhkSelectors} onClick={handleFilterClick} >
+                    {
+                        bhkFilter.map((bhk, index) => (
+                            <button id={bhk} key={index} className={activeFilters.includes(bhk) ? 'selected' : ''}  >
+                                {bhk}
+                            </button>
+                        ))
+                    }
+                    {/* <ul>
                         <li>
-                            <input type="checkbox" id="bh1" />
+                            <input type="checkbox" id="bh1" onChange={(e) => handleCheckbox('1bhk',e.target.checked)} />
                             <label htmlFor="bh1" >1 - BHK</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="bh2" />
+                            <input type="checkbox" id="bh2" onChange={(e) => handleCheckbox('2bhk',e.target.checked)} />
                             <label htmlFor="bh2" >2 - BHK</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="bh3" />
+                            <input type="checkbox" id="bh3" onChange={(e) => handleCheckbox('3bhk',e.target.checked)} />
                             <label htmlFor="bh3" >3 - BHK</label>
                         </li>
                         <li>
-                            <input type="checkbox" id="bh4" />
+                            <input type="checkbox" id="bh4" onChange={(e) => handleCheckbox('4bhk',e.target.checked)} />
                             <label htmlFor="bh4" >4 - BHK</label>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
             <div className={style.rangeContainer} >
                 <div className={style.rangeHeading} >
-                    <span>Price Range: 0 to 10cr</span>
+                    <span>Price Range: 0 to 22K</span>
                 </div>
                 <div className={style.priceRange} >
-                    <input type="range" />
+                    <input type="range" min="7500" max="22000" onChange={(e) => setRangeQuery(e.target.value)}/>
                 </div>
             </div>
             <div className={style.cardinalDirectionContainer} >
                 <div className={style.directionHeading} >
                     <span>Directions</span>
                 </div>
-                <div className={style.directionSelector} >
-                    <ul>
+                <div className={style.directionSelector}  onClick={handleFilterClick} >
+                    {
+                        directionFilter.map((direction, index) => (
+                            <button id={direction} key={index} className={activeFilters.includes(direction) ? 'selected' : ''}  >
+                                {direction}
+                            </button>
+                        ))
+                    }
+                    {/* <ul>
                         <li>
                             <input type="checkbox" id="east" />
                             <label htmlFor="east" >EAST</label>
@@ -58,7 +78,7 @@ function Filter() {
                             <input type="checkbox" id="south" />
                             <label htmlFor="south" >SOUTH</label>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
             <div className={style.parkingContainer} >
@@ -71,10 +91,9 @@ function Filter() {
                 </div>
             </div>
             <div className={style.resetFilter} >
-                <p>⟲ Reset</p>
+                <p onClick={reserFilter} >⟲ Reset</p>
             </div>
         </section>
     )
 }
-
 export default Filter;

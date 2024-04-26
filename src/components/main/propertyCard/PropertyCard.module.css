@@ -119,6 +119,8 @@
 .cartCountContainer i{
     margin: 0 8px;
     color: darkcyan;
+    user-select: none;
+    cursor: pointer;
 }
 
 .bookMang{

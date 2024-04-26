@@ -51,3 +51,8 @@ a{
 #removeButton{
   background-color: red;
 }
+
+.selected{
+  background-color: #2557a7;
+  color: white;
+}

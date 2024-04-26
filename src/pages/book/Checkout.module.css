@@ -3,6 +3,7 @@
     height: 80vh;
     display: flex;
     align-items: center;
+    overflow: auto;
 }
 
 .checkoutContainer{
@@ -37,4 +38,29 @@
 
 .productInfo h2,.productInfo h3{
     margin-top: 9px;
+}
+
+.productName {
+    width: 250px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  
+  .productName h2,
+  .productName p {
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+
+  .productName h2{
+    font-size: 1.1rem;
+  }
+.productName p{
+    font-size: 0.8rem;
+}
+
+.quanity{
+    position: relative;
+    left: -50px;
 }

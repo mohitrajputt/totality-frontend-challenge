@@ -22,9 +22,18 @@
     font-weight: 500;
 }
 
-.bhkSelectors ul, .directionSelector ul{
+.bhkSelectors, .directionSelector{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.bhkSelectors button,.directionSelector button {
+    margin: 2px;
+    height: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.9rem;
+    border: 1px solid gainsboro;
+    text-transform: uppercase;
 }
 
 .bhkSelectors ul li, .directionSelector ul li{
@@ -33,8 +42,6 @@
     text-align: center;
     line-height: 30px;
     user-select: none;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 0.9rem;
 }
 
 .bhkSelectors ul li label, .directionSelector ul li label{
